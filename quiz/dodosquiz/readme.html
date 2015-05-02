@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Dodo's Quiz Script README</title>
+<style type="text/css" media="screen">@import "quiz.css";</style>
+</head>
+
+<body>
+
+<div id="Header">&nbsp;</div>
+<a name="top"></a>
+<div id="Content">
+<div class="header">Dodo's Quiz Script README</div>
+<div class="rings">
+Introduction
+</div>
+<div class="just">
+Dodo's quiz script allows you to make as many quizzes as you want without going thru the code each time. All you have to do is to fill out your question, some optional variables and your results for it to work. You may call the individual quizzes by using the quiz.php?n="number of your quiz".  It's superior to a javascript quiz because no one can peak at your code and cheat on the quiz! It is very simple. Please give it a try! You may also use this script to create math quizzes. Read more about that in the Math Quiz section. The email notification function is quite self-explanatory.
+</div>
+
+<div class="rings">
+Structure (Regular Quiz)
+</div>
+<div class="just">
+My script allows you to add as many questions as you wish and as many answers per question you wish.  Note that you do not need to give the same number of answers per question.  You may also provide as many results as you wish.  Next to each answer, you must tell the script which result does the answer corresponds to. If the quiz taker chooses a particular answer, the script will add 1 to the corresponding result variable. In a regular quiz, the quiz taker will get the result in which s/he scores most points.  However, it's always possible to get the same number of points for two results. The script will then return the first result in your result array. For example, for my quiz, if someone gets the same points for "Somewhat Close" and "THE ONE", the script will return "Somewhat Close" instead of "THE ONE".  This means your results should be listed according to their priority in a descending order. So be thoughtful of how you want to order your results.
+</div>
+
+
+<div class="rings">
+<a name="regular"></a>
+Implementation (Regular Quiz)
+</div>
+<div class="just">
+If you wish to make a regular quiz, please now open the included file <i><b>quiz_1.php</b></i>. In there, you will find you will need to fill out quiz question, description, optional variable, results and the answers. They should be pretty straight forward. If you are confused, just run the script to get an understanding what they are. You may use html code in the results section as long as you <font color=red>make sure</font> you always add a backslash before any quotation marks otherwise php will give you <i><b>PARSE ERROR</b></i>. This also means if you ever encountered parse error when you run your quiz, that's probably where you messed it up. Also be <b>thoughtful</b> how you list your results in the result array. Please read the structure part to fully understanding how it matters.
+<br>
+<a href="#top">Top</a>
+</div>
+
+<div class="rings">
+Structure (Math Quiz)
+</div>
+<div class="just">
+Math quiz has a similar structure with the regular quiz except in the results provided and the way it's calculated. Please only provide TWO results for a math quiz unless you wish the script to tell the quiz taker how many of the total questions s/he has gotten correct. The script will only count the number of questions a quiz taker has gottenn correct in a math quiz. Therefore, it will display essentially only two possible results. Either the person has gotten 100% correct or not.
+</div>
+
+
+<div class="rings">
+<a name="math"></a>
+Implementation (Math Quiz)
+</div>
+<div class="just">
+If you wish to make a math quiz, please now open the included file <i><b>quiz_2.php</b></i>. Now fill out the regular variables until you reach the special variables for a math quiz. Now please give me the index number of your correct result display. This means if you put <b>1=> "You got them all correct!"</b> for the result array, give me <b>1</b>! Then give me the wrong result index number.  If you wish the script to display the number of questions the quiz taker answered correctly, please give me the stuff you want the script to display before and after the number of questions. For example if you wish the result to display:
+<br>
+<br>
+<i>before</i> You didn't get them all correct.<br>
+<i>from the script</i> You got 2 out 3 correct.<br>
+<i>after</i> That's not bad.
+<br>
+<br>
+If you put <b>3=> "You didn't get them all correct."</b> and <b>4=> "That's not bad."</b> in your result array, please give me <b>3</b> for <b>$math_quiz_show_correct_before</b> and <b>4</b> for <b>$math_quiz_show_correct_after</b>! Run the example, and switch on and off the $math_quiz_show_correct variable to get a feeling of it.
+<br>
+<a href="#top">Top</a>
+</div>
+
+
+
+<div class="rings">
+
+Structure (How well do you know Quiz)
+
+</div>
+
+<div class="just">
+
+This quiz is just like the above quizzes except it calculates the quiz score based on how many of the questions you answer correctly.
+
+</div>
+
+
+
+
+
+<div class="rings">
+
+<a name="how_well"></a>
+
+Implementation (How well do you know Quiz)
+
+</div>
+
+<div class="just">
+In addition to what you need to do for a regular quiz, you also need to provide the array of "levels" for this type of quiz. For example, in my "How well do you know math?" quiz, I used the following:<br>
+1=>1, // 1 or less<br>
+2=>3, // greater than 1 and less and equal to 3<br>
+3=>6, // greater than 3 and less and equal to 6<br>
+4=>8, // more than 6! just put the total number of questions here<br>
+<br>
+This means if you answer 1 or less question correctly, you still get a different response than if you answered more than 6 questions correctly. Also for this type, there is only one correct answer per question. Make sure you give one unique number to one of the answers only.
+
+<br>
+
+<a href="#top">Top</a>
+
+</div>
+
+
+
+<div class="rings">
+<a name="css"></a>
+CSS Implementation
+</div>
+<div class="just">
+If you open <b>quiz.css</b>, you may change the definitions there. Especially .header .rings .just and .form. Those define the css of your "quiz title", "individual quiz question", "quiz answers" and the "submit button" respectively. You may also replace the header.php and footer.php with your very own if you wish to have a quiz page to have the same style as other pages in your website. If you wish to do that, please either add .header .rings .just and .form in your own css file or replace every occurrence of them in the dodosquiz.php with other classes you'd like to define the css of your "quiz title", "individual quiz question", "quiz answers" and the "submit button" in your quizzes.
+<br>
+<a href="#top">Top</a>
+</div>
+
+<div class="rings">
+<a name="help"></a>
+Help & FAQ
+</div>
+<div class="just">
+<b>I did everything correctly, why isn't my results SHOWING UP?</b>
+<br>
+If you are using a older version of dodos quiz and have this problem, do two things. Upgrade your dodosquiz.php to the one released after Feb 04, 2003 or make sure you DO NOT have white space after your choices.
+
+<br>
+<br>
+Please remember to read this file thoroughly before you <a href="http://pure-essence.net/domain/contact.php" target="_blank">send me an email</a>.  I will not answer questions that are answered in this readme file. I also welcome suggestions but if I don't have time then I can't implement them.<br>
+<a href="#top">Top</a>
+</div>
+
+<div class="rings">
+Copyright
+</div>
+<div class="just">
+This script is copyrighted by <a href="http://regretless.com/scripts/">Ying Zhang</a>. Please DO NOT redistribute it without written permission. It is released as a linkware. Please <a href="http://regretless.com/scripts/">link me</a> if you wish to use it on your website!
+<br><br>
+Version 1.0 released on Dec 14, 2002<br>
+Completed with quiz type 3 on Jan 23, 2003<br>
+Added email notification function on Jan 30, 2003<br>
+Added a minor fix concerning white spaces after the choice on Feb 04, 2003<br>
+<br>
+<a href="#top">Top</a>
+</div>
+
+</div>
+
+<div id="Menu">
+	<a href="#regular" title="">Regular Quiz</a><br>
+	<a href="#math" title="">Math Quiz</a><br>
+	<a href="#how_well" title="">How well do you know Quiz</a><br>
+	<a href="#css" title="">CSS</a><br>
+	<a href="#help" title="">Help</a><br>
+	<br><br>
+	<a href="dodosquiz.php?n=1" title="Are you the one for Dodo?">Are you the one for Dodo?</a><br>
+	<a href="dodosquiz.php?n=2" title="Will you like to take another quiz?">Will you like to take anthor quiz?</a><br>
+	<a href="dodosquiz.php?n=3" title="Will you like to take another quiz?">How well do you know math?</a><br>
+	<a href="http://regretless.com/scripts/" title="Get more scripts here!">Dodo's Scripts Collection</a><br>
+
+</div>
+
+<!-- BlueRobot was here. -->
+
+</body>
+</html>
